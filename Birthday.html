@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: linear-gradient(
+    135deg, #16002e, #570080, #d41470, #240046
+  );
+  background-size: 300% 300%;
+  animation: gradient 10s ease infinite;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(90%, 650px);
+  margin: 35px auto;
+  padding: 35px 25px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 30px;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 45px rgba(255,0,150,0.3);
+}
+
+.cake {
+  font-size: 85px;
+  animation: bounce 1.8s infinite;
+  filter: drop-shadow(0 0 15px #ff91d5);
+}
+
+h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  margin: 15px 0;
+  color: #fff;
+  text-shadow: 0 0 15px #ff4fc8,
+               0 0 35px #ff008c;
+  animation: pulse 2s infinite;
+}
+
+.name {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: bold;
+  color: #ffe66d;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0 20px #ffcc00;
+  margin: 15px 0;
+}
+
+.subtitle {
+  color: #ffd6f0;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+}
+
+.message {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin: 22px auto;
+  max-width: 500px;
+  color: #fff2fa;
+  animation: fadeIn 2s ease both;
+}
+
+.heart {
+  display: inline-block;
+  font-size: 25px;
+  animation: heartbeat 1.2s infinite;
+}
+
+button {
+  border: none;
+  outline: none;
+  margin: 12px 5px;
+  padding: 14px 25px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #ff0066, #ff66cc);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,0,102,0.5);
+  transition: transform .3s, box-shadow .3s;
+}
+
+button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 30px #ff66cc;
+}
+
+.surprise {
+  display: none;
+  margin: 22px auto 0;
+  padding: 20px;
+  line-height: 1.9;
+  color: #fff1fa;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.10);
+  animation: fadeIn 1s ease;
+}
+
+.footer {
+  margin-top: 25px;
+  color: #ffc9eb;
+  font-size: .9rem;
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  top: -15px;
+  z-index: 1;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+/* Balloons */
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  z-index: 1;
+  font-size: 40px;
+  pointer-events: none;
+  animation: floatUp linear infinite;
+}
+
+.sparkle {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(-8deg); }
+  50% { transform: translateY(-55vh) rotate(8deg); }
+  100% { transform: translateY(-115vh) rotate(-8deg); }
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 28px 17px; }
+  .cake { font-size: 68px; }
+  .message { font-size: 1rem; }
+  button { padding: 13px 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="cake">🎂</div>
+
+  <p class="subtitle">A SPECIAL DAY • A SPECIAL SOUL</p>
+
+  <h1>Happy Birthday!</h1>
+
+  <div class="name" id="name">Someone Special</div>
+
+  <div class="heart">💖</div>
+
+  <p class="message">
+    Today is not just another day. It's a beautiful reminder
+    that the world became a little more special when you were born.
+    <br><br>
+    May your smile always find a reason to shine,
+    may your dreams find their way to reality,
+    and may life surprise you with happiness
+    you never even imagined. ✨
+    <br><br>
+    You deserve beautiful moments, genuine people,
+    peaceful days, and a lifetime of reasons to smile.
+    <br><br>
+    <strong>Keep shining. The world is better with you in it. ❤️</strong>
+  </p>
+
+  <button id="surpriseBtn" onclick="showSurprise()">
+    Open Your Surprise 🎁
+  </button>
+
+  <button onclick="blowCandles()">
+    Make a Wish 🕯️
+  </button>
+
+  <div class="surprise" id="surprise">
+    <h2>One Little Wish 💌</h2>
+    <p>
+      If I could gift you one thing today,
+      it would be the ability to see yourself
+      through the eyes of everyone who truly appreciates you.
+      <br><br>
+      You would understand just how special you are.
+      <br><br>
+      May this new chapter of your life be your most
+      beautiful one yet. Happy Birthday! 🫶
+    </p>
+  </div>
+
+  <div class="footer">
+    Made with 💗, just to make you smile.
+  </div>
+</div>
+
+<script>
+/* CUSTOMIZE THE BIRTHDAY PERSON'S NAME HERE */
+const birthdayPerson = "Someone Special";
+
+/* Update the name */
+document.getElementById("name").textContent = birthdayPerson;
+document.title = "Happy Birthday, " + birthdayPerson + "!";
+
+/* Create falling confetti */
+const colors = [
+  "#ff0066", "#ffcc00", "#00ffcc",
+  "#ff66cc", "#aaff00", "#ffffff", "#ff9900"
+];
+
+function createConfetti(amount = 60) {
+  for (let i = 0; i < amount; i++) {
+    const piece = document.createElement("div");
+    piece.className = "confetti";
+
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    piece.style.width = (Math.random() * 8 + 4) + "px";
+    piece.style.height = (Math.random() * 10 + 5) + "px";
+    piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+
+    piece.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    piece.style.animationDelay = (Math.random() * 2) + "s";
+
+    document.body.appendChild(piece);
+
+    piece.addEventListener("animationend", () => piece.remove());
+  }
+}
+
+/* Create floating balloons */
+function createBalloons() {
+  const emojis = ["🎈", "💗", "🎈", "💖", "🎈", "✨"];
+
+  emojis.forEach((emoji, index) => {
+    const balloon = document.createElement("div");
+    balloon.className = "balloon";
+    balloon.textContent = emoji;
+
+    balloon.style.left = (5 + index * 17) + "%";
+    balloon.style.animationDuration = (9 + Math.random() * 6) + "s";
+    balloon.style.animationDelay = (index * 1.2) + "s";
+
+    document.body.appendChild(balloon);
+  });
+}
+
+/* Create twinkling stars */
+function createStars() {
+  for (let i = 0; i < 35; i++) {
+    const star = document.createElement("div");
+    star.className = "sparkle";
+    star.textContent = Math.random() > 0.5 ? "✦" : "·";
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.color = "#fff4bd";
+    star.style.fontSize = (Math.random() * 18 + 8) + "px";
+    star.style.animationDelay = Math.random() * 2 + "s";
+
+    document.body.appendChild(star);
+  }
+}
+
+/* Surprise message */
+function showSurprise() {
+  const surprise = document.getElementById("surprise");
+  const button = document.getElementById("surpriseBtn");
+
+  const isVisible = surprise.style.display === "block";
+
+  surprise.style.display = isVisible ? "none" : "block";
+  button.textContent = isVisible
+    ? "Open Your Surprise 🎁"
+    : "Close Surprise 💌";
+
+  if (!isVisible) {
+    createConfetti(45);
+  }
+}
+
+/* Birthday wish */
+function blowCandles() {
+  createConfetti(100);
+
+  alert(
+    "🕯️ Make a beautiful wish! ✨\n\n" +
+    "Happy Birthday, " + birthdayPerson + "! 🎂\n\n" +
+    "May your wish find its way to you. ❤️"
+  );
+}
+
+/* Start the birthday animations */
+createConfetti(65);
+createBalloons();
+createStars();
+</script>
+
+</body>
+</html>
